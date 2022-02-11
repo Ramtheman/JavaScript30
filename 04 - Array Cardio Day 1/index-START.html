@@ -29,9 +29,9 @@
 
     const people = [
       'Bernhard, Sandra', 'Bethea, Erin', 'Becker, Carl', 'Bentsen, Lloyd', 'Beckett, Samuel', 'Blake, William', 'Berger, Ric', 'Beddoes, Mick', 'Beethoven, Ludwig',
-      'Belloc, Hilaire', 'Begin, Menachem', 'Bellow, Saul', 'Benchley, Robert', 'Blair, Robert', 'Benenson, Peter', 'Benjamin, Walter', 'Berlin, Irving',
+      'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Blair, Robert', 'Benenson, Peter', 'Benjamin, Walter', 'Berlin, Irving',
       'Benn, Tony', 'Benson, Leana', 'Bent, Silas', 'Berle, Milton', 'Berry, Halle', 'Biko, Steve', 'Beck, Glenn', 'Bergman, Ingmar', 'Black, Elk', 'Berio, Luciano',
-      'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Ben-Gurion, David', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
+      'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Abdel-Nasser, Gamal', 'Kanafani, Ghassan', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
     ];
 
@@ -73,8 +73,16 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    /* My attempt!
     let lastNames = inventors.sort((a,b) => a.last[0] < b.last[0] ? 1 : -1);
     console.table(lastNames);
+    */
+    const lastNames = people.sort((firstGuy,nextGuy) => {
+      const [fLast, fFirst] = firstGuy.split(", ");
+      const [nLast, nFirst] = nextGuy.split(", ");
+      return fLast > nLast ? -1 : 1;
+    });
+    console.log(lastNames);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
