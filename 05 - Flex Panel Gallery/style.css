@@ -55,7 +55,6 @@ body {
   margin: 0;
   width: 100%;
   transition: transform 0.5s;
-  border: 1px red solid;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,4 +79,5 @@ body {
 
 .panel.open {
   font-size: 40px;
+  flex: 5;
 }
