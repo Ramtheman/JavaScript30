@@ -4,16 +4,32 @@ const cities = [];
 
 const prom = fetch(endpoint)
   .then(response => response.json())
-  .then(data => cities.push(...data));
+  .then(data => cities.push(...data))
 
-const input = document.querySelector(".search");
-const value = input.value;
 
-input.addEventListener('input', updateValue);
-
-const updateValue = function(e) {
-  value = e.target.value;
+  // case sensitive filtering? Use regex
+const findMatches = function(wordToMatch, cities) {
+  return cities.filter(place => {
+    // figure out if the city or state matches what was searched
+    const regex = RegExp(wordToMatch, 'gi');
+    return place.city.match(regex) || place.state.match(regex);
+  });
 }
 
+const displayMatches = function() {
+  const matchArray = findMatches(this.value, cities);
+  const html = matchArray.map(place => {
+    return `
+      <li>
+        <span class='name'>${place.city}, ${place.state}</span>
+        <span class='population'>${place.population}</span>
+      </li>
+    `;
+  }).join('');
+  suggestions.innerHTML = html;
+}
 
-const filtered_prom = cities.filter(place => place.city.includes(value));
+const searchInput = document.querySelector(".search");
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('keyup', displayMatches);
