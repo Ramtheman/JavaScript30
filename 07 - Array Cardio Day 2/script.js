@@ -33,7 +33,7 @@ console.log(findComment);
 console.table(comments);
 const findCommentIndex = comments.findIndex(comment => comment.id === 823423);
 //comments.splice(findCommentIndex, 1);
-console.table(comments);
+//console.table(comments);
 // or you could create a new array
 const newArray = [
   ...comments.slice(0,findCommentIndex),
